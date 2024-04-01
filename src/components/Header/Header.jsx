@@ -1,6 +1,10 @@
-import { NavLink } from "react-router-dom"
+import { useContext } from "react"
+import { Link, NavLink } from "react-router-dom"
+import { AuthContext } from "../Provider/AouthProvider"
 
 export default function Header() {
+    const {user,signOutUser}=useContext(AuthContext)
+
     const Nablinks = <>
         <li><NavLink to='/'>Home</NavLink></li>
         <li><NavLink to='/signup'>SignUp</NavLink></li>
@@ -26,7 +30,11 @@ export default function Header() {
                 </ul>
             </div>
             <div className="navbar-end">
-                <a className="btn">Button</a>
+                <p>{user&& user.email}</p>
+                {
+                    user?<a onClick={signOutUser} className="btn">Log Out</a>:
+                    <Link to='/signin'  className="btn">Sign In</Link>
+                }
             </div>
         </div>
     )
