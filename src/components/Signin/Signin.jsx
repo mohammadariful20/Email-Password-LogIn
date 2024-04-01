@@ -4,27 +4,32 @@ import { AuthContext } from "../Provider/AouthProvider"
 
 
 export default function Signin() {
-    const{signInUser}=useContext(AuthContext)
+    // const [signinUser, setSigninUser] = useState([])
+    const { signInUser ,user} = useContext(AuthContext)
     const handleSubmit = (e) => {
-      e.preventDefault()
-      const email=e.target.email.value
-      const password=e.target.password.value
-    //   console.log(email,password)
-    //sign in user
-    signInUser(email,password)
-    .then(result=>{
-        const user=result.user
-        console.log(user)
-    })
-    .catch(error=>console.log(error))
+        e.preventDefault()
+        const email = e.target.email.value
+        const password = e.target.password.value
+        //   console.log(email,password)
+        //sign in user
+        signInUser(email, password)
+            .then(result => {
+                const user = result.user
+                console.log(user)
+                // setSigninUser(user)
+            })
+            .catch(error => console.log(error))
     }
-    
+
     return (
         <>
             <div className="hero min-h-screen bg-base-200">
                 <div className="hero-content flex-col ">
                     <div className="text-center">
                         <h1 className="text-5xl font-bold">Login now!</h1>
+                        {
+                            user && <p className="text-green-300">SignIn Secesfull</p>
+                        }
                     </div>
                     <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                         <form className="card-body" onSubmit={handleSubmit}>

@@ -11,6 +11,7 @@ import Signin from './components/Signin/Signin';
 import SignUp from './components/SignUp/SignUp';
 import Others from './components/Others/Others';
 import AuthProvider from './components/Provider/AouthProvider';
+import Privates from './components/Privates/Privates';
 
 const router = createBrowserRouter([
   {
@@ -31,7 +32,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/others',
-        element: <Others />
+        element: <Privates><Others></Others></Privates>
       }
     ]
   },
