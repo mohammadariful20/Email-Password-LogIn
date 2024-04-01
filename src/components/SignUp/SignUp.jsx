@@ -18,6 +18,7 @@ export default function SignUp() {
                 const newUser = result.user
                 // console.log(user)
                 setCreateUser(newUser)
+                e.target.reset()
             })
             .catch(err => console.log(err))
     }

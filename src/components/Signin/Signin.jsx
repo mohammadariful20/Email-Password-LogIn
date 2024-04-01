@@ -1,9 +1,10 @@
 import { useContext } from "react"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { AuthContext } from "../Provider/AouthProvider"
 
 
 export default function Signin() {
+    const Navigate=useNavigate()
     // const [signinUser, setSigninUser] = useState([])
     const { signInUser ,user} = useContext(AuthContext)
     const handleSubmit = (e) => {
@@ -17,6 +18,9 @@ export default function Signin() {
                 const user = result.user
                 console.log(user)
                 // setSigninUser(user)
+                e.target.reset()
+                Navigate('/')
+
             })
             .catch(error => console.log(error))
     }
